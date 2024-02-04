@@ -1,10 +1,10 @@
 import React from "react";
 
-function MainCard() {
+function MainCard(props) {
   return (
     <div className="list-container">
       <div className="heading">
-        <h1>To-Do-List</h1>
+        <h1>{props.title}</h1>
       </div>
       <div className="form">
         <input type="text" />
