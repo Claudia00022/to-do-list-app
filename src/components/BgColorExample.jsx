@@ -62,7 +62,7 @@ function BgColorExample(props) {
           </Card.Body>{" "}
         </Card>
       ))}{" "}
-      <Button variant="primary"> Primary </Button>{" "}
+
     </>
   );
 }
