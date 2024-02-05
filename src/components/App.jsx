@@ -8,10 +8,18 @@ import buttonWeek from "../buttonWeek";
 
 function App() {
   const [text, setText] = useState("To-Do-List");
+  const [items, setItems] = useState([]);
 
   function changeText(test) {
     setText(test);
   }
+
+  function addItem(inputText) {
+    setItems((prevItems) => {
+      return [...prevItems, inputText];
+    });
+  }
+
   return (
     <div>
       <Header />
@@ -26,8 +34,8 @@ function App() {
           />
         );
       })}
-      <MainCard title={text} />
-      <BgColorExample />
+      <MainCard title={text} onAddItem={addItem} />
+      <BgColorExample item={items} />
       <Footer />
     </div>
   );

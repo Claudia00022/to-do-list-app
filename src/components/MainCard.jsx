@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
 function MainCard(props) {
+  const [inputText, setInputText] = useState("");
+
+  function changeHandle(event) {
+    const newItem = event.target.value;
+    setInputText(newItem);
+  }
+
   return (
     <div className="list-container">
       <div className="heading">
-        <h1>{props.title}</h1>
-      </div>
+        <h1> {props.title} </h1>{" "}
+      </div>{" "}
       <div className="form">
-        <input type="text" />
-        <button>
-          <span>Add</span>
-        </button>
-      </div>
-      <div>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        <input
+          type="text"
+          value={inputText}
+          placeholder="Title"
+          onChange={changeHandle}
+        />{" "}
+        <button
+          onClick={() => {
+            props.onAddItem(inputText);
+          }}
+        >
+          <span> Add </span>{" "}
+        </button>{" "}
       </div>
     </div>
   );

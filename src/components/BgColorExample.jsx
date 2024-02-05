@@ -3,7 +3,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function BgColorExample() {
+function BgColorExample(props) {
   return (
     <>
       {" "}
@@ -56,7 +56,7 @@ function BgColorExample() {
           <Card.Body>
             <Card.Text>
               <ul>
-                <li> gfgf </li> <li> ggf </li> <li> gfgf </li>{" "}
+                <li>{props.item}</li> <li> ggf </li> <li> gfgf </li>{" "}
               </ul>
             </Card.Text>{" "}
           </Card.Body>{" "}
