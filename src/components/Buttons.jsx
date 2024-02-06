@@ -12,6 +12,7 @@ function Buttons(props) {
             variant={props.variant}
             onClick={() => {
               props.onAdd(props.name);
+              props.handleButtonClick(props.id);
             }}
           >
             {props.name}

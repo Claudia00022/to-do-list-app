@@ -9,6 +9,7 @@ import buttonWeek from "../buttonWeek";
 function App() {
   const [text, setText] = useState("To-Do-List");
   const [items, setItems] = useState([]);
+  const [selectedKey, setSelectedKey] = useState(null);
 
   function changeText(test) {
     setText(test);
@@ -19,6 +20,10 @@ function App() {
       return [...prevItems, inputText];
     });
   }
+
+  const handleButtonClick = (index) => {
+    setSelectedKey(index);
+  };
 
   return (
     <div>
@@ -31,17 +36,23 @@ function App() {
             id={version.id}
             name={version.dayOfWeek}
             onAdd={changeText}
+            handleButtonClick = {handleButtonClick}
           />
         );
       })}
-      <MainCard title={text} onAddItem={addItem} />
+      <MainCard title={text} onAddItem={addItem}
+        />
       {buttonWeek.map((variant) =>{
         return <Cards 
         item={items}
         titleOfCard = {variant.dayOfWeek}
         bg={variant.type}
         key={variant.id}
+        id= {variant.id}
         text={variant.type === "light" ? "dark" : "white"}
+        isBigger={selectedKey === variant.id}
+     
+        
          />
       })}
       
