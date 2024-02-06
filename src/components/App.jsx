@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BgColorExample from "./BgColorExample";
+import Cards from "./Cards";
 import Header from "./Header";
 import Footer from "./Footer";
 import Buttons from "./Buttons";
@@ -35,7 +35,16 @@ function App() {
         );
       })}
       <MainCard title={text} onAddItem={addItem} />
-      <BgColorExample item={items} />
+      {buttonWeek.map((variant) =>{
+        return <Cards 
+        item={items}
+        titleOfCard = {variant.dayOfWeek}
+        bg={variant.type}
+        key={variant.id}
+        text={variant.type === "light" ? "dark" : "white"}
+         />
+      })}
+      
       <Footer />
     </div>
   );
