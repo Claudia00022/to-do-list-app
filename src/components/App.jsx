@@ -6,10 +6,15 @@ import Buttons from "./Buttons";
 import MainCard from "./MainCard";
 import buttonWeek from "../buttonWeek";
 
+
+
+
+
 function App() {
   const [text, setText] = useState("To-Do-List");
   const [items, setItems] = useState([]);
   const [selectedKey, setSelectedKey] = useState(null);
+
 
   function changeText(test) {
     setText(test);
@@ -25,6 +30,10 @@ function App() {
     setSelectedKey(index);
   };
 
+
+
+  
+
   return (
     <div>
       <Header />
@@ -37,10 +46,11 @@ function App() {
             name={version.dayOfWeek}
             onAdd={changeText}
             handleButtonClick = {handleButtonClick}
+            
           />
         );
       })}
-      <MainCard title={text} onAddItem={addItem}
+      <MainCard title={text} onAddItem={addItem} 
         />
       {buttonWeek.map((variant) =>{
         return <Cards 
@@ -51,11 +61,13 @@ function App() {
         id= {variant.id}
         text={variant.type === "light" ? "dark" : "white"}
         isBigger={selectedKey === variant.id}
+        isText = {selectedKey === variant.id}
+
+     
      
         
-         />
+         />  
       })}
-      
       <Footer />
     </div>
   );

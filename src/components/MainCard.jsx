@@ -23,6 +23,8 @@ function MainCard(props) {
         <button
           onClick={() => {
             props.onAddItem(inputText);
+            setInputText("");
+          
           }}
         >
           <span> Add </span>{" "}
