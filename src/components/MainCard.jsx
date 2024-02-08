@@ -24,6 +24,7 @@ function MainCard(props) {
           onClick={() => {
             props.onAddItem(inputText);
             setInputText("");
+            props.onPush();
           
           }}
         >

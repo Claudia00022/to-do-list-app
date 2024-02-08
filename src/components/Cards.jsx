@@ -24,11 +24,13 @@ function Cards(props) {
       <ul>
       {props.item.map((todoItem) =>{
         return <li>
-           {props.isText? todoItem : null}
+           { todoItem}
         </li>
       })}
       
-      </ul>
+      </ul> 
+
+      
       </Card.Text>  
       
         </Card.Body>{" "}
