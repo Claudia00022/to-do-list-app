@@ -22,11 +22,11 @@ function Cards(props) {
         <Card.Body>
         <Card.Text>
       <ul>
-      {props.item.map((todoItem) =>{
+     {props.values.map((todoItem) =>{
         return <li>
            { todoItem}
         </li>
-      })}
+      })} 
       
       </ul> 
 

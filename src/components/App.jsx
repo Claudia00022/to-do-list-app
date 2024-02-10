@@ -17,7 +17,7 @@ function App() {
   const [arrayOfObjects, setArrayOfObjects] = useState(buttonWeek);
 
 
-  const arrayToPush = items;
+ 
 
 
 
@@ -26,9 +26,12 @@ function App() {
   }
 
   function addItem(inputText) {
-    setItems((prevItems) => {
-      return [...prevItems, inputText];
-    });
+    
+   setItems( buttonWeek[selectedKey].values.push(inputText));
+    console.log(buttonWeek)
+    // setItems((prevItems) => {
+    //   return [...prevItems, inputText];
+    // });
   }
 
 
@@ -42,13 +45,19 @@ function App() {
   function pushArrayIntoObjects(){
     console.log(selectedKey);
     const updateArray = arrayOfObjects.map(obj => {
-      return ({
+      console.log(obj.length - 1)
+      if(selectedKey === obj.id){  return ({
       ...obj,
-      values:[...obj.values, ...arrayToPush]
-    })});
+      values:[items]
+    })}else{
+      return  obj ;
+      
+    }
+    });
  
     setArrayOfObjects(updateArray);
        console.log(arrayOfObjects)
+       
   }
 
 
@@ -58,7 +67,7 @@ function App() {
   return (
     <div>
       <Header />
-      {arrayOfObjects.map((version) => {
+      {buttonWeek.map((version) => {
         return (
           <Buttons
             key={version.id}
@@ -71,11 +80,11 @@ function App() {
           />
         );
       })}
-      <MainCard title={text} onAddItem={addItem} onPush = {pushArrayIntoObjects}
+      <MainCard title={text} onAddItem={addItem} 
         />
       {arrayOfObjects.map((variant) =>{
         return <Cards 
-        item={arrayToPush}
+        item={items}
         things = {variant.values}
         titleOfCard = {variant.dayOfWeek}
         bg={variant.type}
@@ -83,6 +92,9 @@ function App() {
         id= {variant.id}
         text={variant.type === "light" ? "dark" : "white"}
         isBigger={selectedKey === variant.id}
+        // isCorrectCard = {selectedKey === variant.id}
+        values = {variant.values}
+       
       
 
      
