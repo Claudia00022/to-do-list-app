@@ -112,3 +112,7 @@ li {
   font-size: 1rem;
   color: hsla(260, 2%, 25%, 1);
 }
+
+.showCard{
+  display:none
+}
