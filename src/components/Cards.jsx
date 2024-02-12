@@ -4,19 +4,31 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 
 function Cards(props) {
+  
 
-  const [list, updateList] = useState(props.values)
+  
+  // const [list, updateList] = useState(props.values)
 
-function deletItem(value){
+  // function deletItem(value){
+  
+  //   console.log(list, 'c')
+  //   let temp = list.filter(function(item) {
+  //     return item !== value
+  // })
+  //   updateList(temp
+  //      )
+  
+  // }
 
-  console.log(list, 'c')
-  let temp = list.filter(function(item) {
-    return item !== value
-})
-  updateList(temp
-     )
+  // function deleteItem(id) {
+  //   setItems((prevItems) => {
+  //     return prevItems.filter((item, index) => {
+  //       return index !== id;
+  //     });
+  //   });
+  // }
 
-}
+
 
   return (
     <>
@@ -39,7 +51,7 @@ function deletItem(value){
           <Card.Body>
             <Card.Text>
               <ul>
-                {list.map((todoItem) => {
+                {props.values.map((todoItem) => {
                   return (
                     <div
               
@@ -48,7 +60,7 @@ function deletItem(value){
                       <li
                         className="list-text-style"
                         style={{ color: "white" }}
-                        onClick={()=>deletItem(todoItem)}
+                        onClick={()=> props.onDelete(todoItem)}
                       >
                         {todoItem.val}{" "}
                       </li>

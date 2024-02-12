@@ -14,6 +14,7 @@ function Buttons(props) {
           onClick={() => {
             props.onAdd(props.name);
             props.handleButtonClick(props.id);
+            props.cardId(props.id);
           }}
         >
           {props.name}
