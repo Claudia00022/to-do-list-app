@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 
 function Cards(props) {
+ 
   
 
   
@@ -58,9 +59,14 @@ function Cards(props) {
                       
                     >
                       <li
+                        idLi = {todoItem.id}
                         className="list-text-style"
                         style={{ color: "white" }}
-                        onClick={()=> props.onDelete(todoItem)}
+
+                        onClick={()=>{
+                        // props.lista(todoItem.id)
+                        props.onDelete(todoItem.id)}}
+
                       >
                         {todoItem.val}{" "}
                       </li>
