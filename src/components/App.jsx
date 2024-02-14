@@ -4,39 +4,42 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Buttons from "./Buttons";
 import MainCard from "./MainCard";
-import buttonWeek from "../buttonWeek";
+
 import cardsarray from "../cardsarray";
 
 import Row from "react-bootstrap/Row";
 
 function App() {
   const [text, setText] = useState("To-Do-List");
-  const [items, setItems] = useState([]);
-  const [selectedKey, setSelectedKey] = useState(null);
+  const [items, setItems] = useState(cardsarray);
   const [selectCard, setSelectedCard] = useState(null);
 
-  const handleButtonClick = (index) => {
-    setSelectedKey(index);
-  };
+
+
+
+
 
   function changeText(test) {
     setText(test);
   }
 
   function addItem(inputText) {
-    let newItem = cardsarray[selectCard].values.push({
-      id: cardsarray[selectCard].values.length + 1,
+    if (!selectCard){
+       alert("click button")
+    } else{
+       items[selectCard].values.push({
+      id: items[selectCard].values.length + 1,
       val: inputText,
     });
-    setItems(newItem);
+    console.log(items);
+    setItems([...items]);
+    }
+   
   }
 
-  function deleteItem(index) {
-    setItems((prevItems) => {
-      const temp = cardsarray[selectCard].values;
-      temp.splice(index - 1, 1);
-      return { ...prevItems, temp };
-    });
+  function deleteItem(id, index) {
+    items[index].values = items[index].values.filter((item) => item.id !== id);
+    setItems([...items]);
   }
 
   function handleSelectedCard(i) {
@@ -52,7 +55,7 @@ function App() {
       </div>
 
       <Row className=" container mt-5 " style={{ margin: "auto" }}>
-        {buttonWeek.map((version) => {
+        {items.map((version) => {
           return (
             <Buttons
               key={version.id}
@@ -60,7 +63,6 @@ function App() {
               id={version.id}
               name={version.dayOfWeek}
               onAdd={changeText}
-              handleButtonClick={handleButtonClick}
               cardId={handleSelectedCard}
               isTrue={selectCard === version.id}
               cardKey={selectCard}
@@ -73,7 +75,7 @@ function App() {
         className=" container mt-5 justify-content-center "
         style={{ margin: "auto" }}
       >
-        {cardsarray.map((variant) => {
+        {items.map((variant) => {
           return (
             <Cards
               titleOfCard={variant.dayOfWeek}
@@ -81,7 +83,7 @@ function App() {
               key={variant.id}
               id={variant.id}
               text={variant.type === "light" ? "dark" : "white"}
-              isBigger={selectedKey === variant.id}
+              isBigger={selectCard === variant.id}
               values={variant.values}
               onDelete={deleteItem}
             />

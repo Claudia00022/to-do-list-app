@@ -1,36 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 
 function Cards(props) {
- 
-  
-
-  
-  // const [list, updateList] = useState(props.values)
-
-  // function deletItem(value){
-  
-  //   console.log(list, 'c')
-  //   let temp = list.filter(function(item) {
-  //     return item !== value
-  // })
-  //   updateList(temp
-  //      )
-  
-  // }
-
-  // function deleteItem(id) {
-  //   setItems((prevItems) => {
-  //     return prevItems.filter((item, index) => {
-  //       return index !== id;
-  //     });
-  //   });
-  // }
-
-
-
   return (
     <>
       <Col className="col-4 text-center d-flex justify-content-center">
@@ -54,19 +27,14 @@ function Cards(props) {
               <ul>
                 {props.values.map((todoItem) => {
                   return (
-                    <div
-              
-                      
-                    >
+                    <div>
                       <li
-                        idLi = {todoItem.id}
+                        idLi={todoItem.id}
                         className="list-text-style"
                         style={{ color: "white" }}
-
-                        onClick={()=>{
-                        // props.lista(todoItem.id)
-                        props.onDelete(todoItem.id)}}
-
+                        onClick={() => {
+                          props.onDelete(todoItem.id, props.id);
+                        }}
                       >
                         {todoItem.val}{" "}
                       </li>
