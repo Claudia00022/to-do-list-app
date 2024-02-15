@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+
+
+
 function MainCard(props) {
   const [inputText, setInputText] = useState("");
 
@@ -24,8 +27,6 @@ function MainCard(props) {
           onClick={() => {
             props.onAddItem(inputText);
             setInputText("");
-            // props.onPush();
-          
           }}
         >
           <span> Add </span>{" "}

@@ -4,37 +4,41 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Buttons from "./Buttons";
 import MainCard from "./MainCard";
-
 import cardsarray from "../cardsarray";
-
 import Row from "react-bootstrap/Row";
+
+
+
+
+
 
 function App() {
   const [text, setText] = useState("To-Do-List");
   const [items, setItems] = useState(cardsarray);
-  const [selectCard, setSelectedCard] = useState(null);
+  const [selectCard, setSelectedCard] = useState();
+  const [selectButton, setSelectButton] = useState(1);
 
-
-
-
-
+  function handleSelectButton(button) {
+    setSelectButton(button);
+  }
 
   function changeText(test) {
     setText(test);
   }
 
   function addItem(inputText) {
-    if (!selectCard){
-       alert("click button")
-    } else{
-       items[selectCard].values.push({
-      id: items[selectCard].values.length + 1,
-      val: inputText,
-    });
-    console.log(items);
-    setItems([...items]);
+    const wrongCard = false;
+
+    if (selectCard !== selectButton) {
+      alert("Click button to choose day! ");
+    } else {
+      items[selectCard].values.push({
+        id: items[selectCard].values.length + 1,
+        val: inputText,
+      });
+      console.log(items);
+      setItems([...items]);
     }
-   
   }
 
   function deleteItem(id, index) {
@@ -66,6 +70,8 @@ function App() {
               cardId={handleSelectedCard}
               isTrue={selectCard === version.id}
               cardKey={selectCard}
+              onButton={handleSelectButton}
+              isBiggerButton={selectCard === version.id}
             />
           );
         })}
