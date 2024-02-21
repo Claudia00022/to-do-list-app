@@ -1,3 +1,7 @@
+
+
+https://github.com/Claudia00022/to-do-list-app/assets/142623403/8acdff1d-0b10-42a9-a954-2f4e5dffc7c4
+
 # ToDoList 
 ToDoList is an application where you can organize your daily tasks. Depending on the day, the application will categorize your tasks and arrange them in order. When a task is completed, you can remove it from the list.
 
